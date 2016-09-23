@@ -14,3 +14,4 @@ On Working directory
 Then
 
     gulp serve
+    localhost:3000
