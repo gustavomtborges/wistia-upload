@@ -16,9 +16,7 @@
         dataType: 'json',
         done: function (e, data) {
           controller.videoId = data.result.hashed_id
-          controller.videoUrl = '//fast.wistia.com/embed/medias/' + controller.videoId + '.jsonp'
-          $sce.trustAsUrl(controller.videoUrl)
-          controller.videoName = data.result.name
+          controller.videoUrl = $sce.trustAsResourceUrl('//fast.wistia.net/embed/iframe/' + controller.videoId)
           controller.started = false
           controller.videoDone = true
           $scope.$apply()

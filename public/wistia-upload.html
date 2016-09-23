@@ -26,12 +26,10 @@
     <hr />
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1">
-          <div ng-show="uploadCtrl.videoDone">
-            <script src="{{uploadCtrl.videoUrl}}" async></script>
-            <script src="//fast.wistia.com/assets/external/E-v1.js" async></script>
-            <div class="wistia_embed wistia_async_{{uploadCtrl.videoId}}" style="height:361px;width:640px">&nbsp;</div>
-          </div>
+            <div ng-show="uploadCtrl.videoDone">
+                <iframe ng-src="{{uploadCtrl.videoUrl}}" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="620" height="349"></iframe>                
+                <script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
+            </div>
         </div>
-        <script src="//fast.wistia.com/embed/medias/xej5allksp.jsonp" async></script><script src="//fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_embed wistia_async_xej5allksp" style="height:361px;width:640px">&nbsp;</div>
     </div>
 </div>
