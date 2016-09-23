@@ -8,7 +8,7 @@ Clone repository
 
 On Working directory
 
-     npm install
+    npm install
     bower install
 
 Then
