@@ -2,8 +2,8 @@ var gulp = require('gulp')
 var nodemon = require('gulp-nodemon')
 
 var paths = {
-  jsFiles: ['*.js', 'public/app/**/*.js'],
-  cssFiles: ['public/app/css/**/*.js']
+  jsFiles: ['*.js', 'public/**/*.js'],
+  cssFiles: ['public/css/**/*.js']
 }
 
 gulp.task('serve', function () {
