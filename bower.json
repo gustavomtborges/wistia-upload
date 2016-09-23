@@ -1,0 +1,23 @@
+{
+  "name": "wistia-upload",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Gustavo M T Borges"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/gustavomtborges/wistia-upload",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "blueimp-file-upload": "^9.12.5"
+  }
+}
