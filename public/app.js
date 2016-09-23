@@ -47,6 +47,7 @@
         '                    <span>Select video...</span>' +
         '                <input id="fileupload" type="file" name="files" ng-click="uploadCtrl.startUpload()">' +
         '                </span>' +
+        '<p>Select .mp4 format</p>' +
         '                <br />' +
         '                <br />' +
 
