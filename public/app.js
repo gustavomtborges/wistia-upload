@@ -4,9 +4,9 @@
     .controller('UploadController', UploadController)
     .directive('wistiaUpload', WistiaUpload)
 
+  // Upload controller
   function UploadController ($scope, $http, $sce) {
     var controller = this
-
     controller.started = false
 
     controller.startUpload = function () {
@@ -16,9 +16,7 @@
         dataType: 'json',
         done: function (e, data) {
           controller.videoId = data.result.hashed_id
-          controller.videoUrl = '//fast.wistia.com/embed/medias/' + controller.videoId + '.jsonp'
-          $sce.trustAsUrl(controller.videoUrl)
-          controller.videoName = data.result.name
+          controller.videoUrl = $sce.trustAsResourceUrl('//fast.wistia.net/embed/iframe/' + controller.videoId)
           controller.started = false
           controller.videoDone = true
           $scope.$apply()
@@ -32,48 +30,48 @@
     }
   }
 
+  // Wistia directive
   function WistiaUpload () {
     return {
       restrict: 'E',
       controller: 'UploadController',
       controllerAs: 'uploadCtrl',
       template: '<div class="container" style="margin-top: 5em">' +
-          '<div class="row">' +
-          '    <div class="col-lg-10 col-lg-offset-1">' +
-          '        <div class="panel panel-default">' +
-          '            <div class="panel-heading">Video Upload</div>' +
-          '            <div class="panel-body">' +
-          '                <span class="btn btn-primary fileinput-button">' +
-          '                    <i class="glyphicon glyphicon-plus"></i>' +
-          '                    <span>Select video...</span>' +
-          '                <input id="fileupload" type="file" name="files" ng-click="uploadCtrl.startUpload()">' +
-          '                </span>' +
-          '                <br />' +
-          '                <br />' +
+        '<div class="row">' +
+        '    <div class="col-lg-10 col-lg-offset-1">' +
+        '        <div class="panel panel-default">' +
+        '            <div class="panel-heading">Video Upload</div>' +
+        '            <div class="panel-body">' +
+        '                <span class="btn btn-primary fileinput-button">' +
+        '                    <i class="glyphicon glyphicon-plus"></i>' +
+        '                    <span>Select video...</span>' +
+        '                <input id="fileupload" type="file" name="files" ng-click="uploadCtrl.startUpload()">' +
+        '                </span>' +
+        '                <br />' +
+        '                <br />' +
 
-          '                <div ng-show="uploadCtrl.started">' +
-          '                    <div class="progress">' +
-          '                        <div class="progress-bar" role="progressbar" aria-valuenow="{{uploadCtrl.progress}}" aria-valuemin="0" aria-valuemax="100">' +
-          '                        </div>' +
-          '                    </div>' +
-          '                </div>' +
+        '                <div ng-show="uploadCtrl.started">' +
+        '                    <div class="progress">' +
+        '                        <div class="progress-bar" role="progressbar" aria-valuenow="{{uploadCtrl.progress}}" aria-valuemin="0" aria-valuemax="100">' +
+        '                        </div>' +
+        '                    </div>' +
+        '                </div>' +
 
-          '            </div>' +
-          '        </div>' +
-          '    </div>' +
-          '</div>' +
-          '<hr />' +
-          '<div class="row">' +
-          '    <div class="col-lg-10 col-lg-offset-1">' +
-          '      <div ng-show="uploadCtrl.videoDone">' +
-          '        <script src="{{uploadCtrl.videoUrl}}" async></script>' +
-          '        <script src="//fast.wistia.com/assets/external/E-v1.js" async></script>' +
-          '        <div class="wistia_embed wistia_async_{{uploadCtrl.videoId}}" style="height:361px;width:640px">&nbsp;</div>' +
-          '      </div>' +
-          '    </div>' +
-          '    <script src="//fast.wistia.com/embed/medias/xej5allksp.jsonp" async></script><script src="//fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_embed wistia_async_xej5allksp" style="height:361px;width:640px">&nbsp;</div>' +
-          '</div>' +
-      '</div>'
+        '            </div>' +
+        '        </div>' +
+        '    </div>' +
+        '</div>' +
+        '<hr />' +
+        '<div class="row">' +
+        '    <div class="col-lg-10 col-lg-offset-1">' +
+        '      <div ng-show="uploadCtrl.videoDone">' +
+        '      <iframe ng-src="{{uploadCtrl.videoUrl}}" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="620" height="349"></iframe>' +
+        '       <script src="//fast.wistia.net/assets/external/E-v1.js" async></script>' +
+        '        ' +
+        '      </div>' +
+        '    </div>' +
+        '</div>' +
+        '</div>'
     }
   }
 })()
